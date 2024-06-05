@@ -1,6 +1,7 @@
 #!/bin/bash
 
-in_path() 
+in_path()
+# shellcheck disable=SC1017
 {
     cmd=$1 path=$2 result=1
     oldIFS=$IFS IFS=":"
@@ -40,4 +41,4 @@ case $? in
   2 ) echo "$1 not found" ;;
 esac
 
-exit 0
+#exit 0
