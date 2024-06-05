@@ -33,7 +33,7 @@ if [ $# -ne 1 ] ; then
   exit 1
 fi 
 
-checkForCmdInPath $1 
+checkForCmdInPath "$1" 
 case $? in 
   0 ) echo "$1 found in path" ;;
   1 ) echo "$1 not found or not executable" ;;
