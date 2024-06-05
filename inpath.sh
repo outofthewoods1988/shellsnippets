@@ -1,15 +1,14 @@
 #!/bin/bash
 
 in_path()
-# shellcheck disable=SC1017
 {
-    cmd=$1 path=$2 result=1
+    cmd=$1 path=$2 result=1    
     oldIFS=$IFS IFS=":"
 
-    for directory in "$path" 
-    do 
-      if [ -x "$directory/$cmd" ] ; then 
-        result=0 
+    for directory in $path
+    do
+      if [ -x "$directory/$cmd" ] ; then
+        result=0
       fi 
     done 
     IFS=$oldIFS
