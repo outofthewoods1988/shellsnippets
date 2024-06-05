@@ -19,8 +19,8 @@ checkForCmdInPath() {
   var=$1
   if [ $var != "" ] ; then 
     if [ ${var:0:1} = "/" ] ; then 
-      if [ -x $var ] ; then 
-        result=0
+      if [ ! -x $var ] ; then 
+        result=1
       fi 
     elif ! in_path $var "$PATH" ; then 
       return 2
@@ -36,7 +36,7 @@ fi
 checkForCmdInPath $1 
 case $? in 
   0 ) echo "$1 found in path" ;;
-  1 ) echo "$1 not found" ;;
-  2 ) echo "not found or not executable" ;;
+  1 ) echo "$1 not found or not executable" ;;
+  2 ) echo "not executable" ;;
 esac 
 exit 0 
