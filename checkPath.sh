@@ -5,7 +5,7 @@ in_path()
   cmd=$1  path=$2 result=1
   oldIFS=$IFS IFS=":"
 
-  for directory in "$path" 
+  for directory in $path
   do 
     if [ -x $directory/$cmd ] ; then 
       result=0
