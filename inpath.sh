@@ -5,7 +5,7 @@ in_path()
     cmd=$1 path=$2 result=1    
     oldIFS=$IFS IFS=":"
 
-    for directory in $path
+    for directory in $path # if using double quote for $path, it will not word split, and the loop will only run once.
     do
       if [ -x "$directory/$cmd" ] ; then
         result=0
