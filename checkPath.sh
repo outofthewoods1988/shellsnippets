@@ -21,8 +21,11 @@ checkForCmdInPath() {
     if [ ${var:0:1} = "/" ] ; then 
       if [ -x $var ] ; then 
         result=0
+      fi 
     elif ! in_path $var "$PATH" ; then 
-      return 2 
+      return 2
+    fi 
+  fi  
 }
 
 if [ $# -ne 1 ] ; then 
