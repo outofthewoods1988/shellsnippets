@@ -1,6 +1,7 @@
 #!/bin/bash 
 
-in_path() {
+in_path() 
+{
   cmd=$1  path=$2 result=1
   oldIFS=$IFS IFS=":"
 
@@ -15,7 +16,8 @@ in_path() {
   return $result 
 }
 
-checkForCmdInPath() {
+checkForCmdInPath() 
+{
   var=$1
   if [ "$var" != "" ] ; then 
     if [ "${var:0:1}" = "/" ] ; then 
