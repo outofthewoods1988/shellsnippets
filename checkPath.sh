@@ -17,8 +17,8 @@ in_path() {
 
 checkForCmdInPath() {
   var=$1
-  if [ $var != "" ] ; then 
-    if [ ${var:0:1} = "/" ] ; then 
+  if [ "$var" != "" ] ; then 
+    if [ "${var:0:1}" = "/" ] ; then 
       if [ ! -x $var ] ; then 
         result=1
       fi 
