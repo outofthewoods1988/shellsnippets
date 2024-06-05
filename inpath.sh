@@ -8,7 +8,7 @@ in_path()
 
     for directory in "$path" 
     do 
-      if [ -x $directory/$cmd ] ; then 
+      if [ -x "$directory/$cmd" ] ; then 
         result=0 
       fi 
     done 
