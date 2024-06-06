@@ -33,3 +33,7 @@ validint()
     fi
 
 }
+
+if validint $1 $2 $3 ; then
+  echo "enter valid value"
+fi
