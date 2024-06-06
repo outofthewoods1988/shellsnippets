@@ -10,7 +10,7 @@ validint()
     fi
 
     nodigit="$(echo $number | sed 's/[[:digit:]]//g')"
-    if [ $nodigit = "." ] ; then
+    if [ "$nodigit" = "." ] ; then
       echo "enter non-decimal value."
       return 1
     fi
