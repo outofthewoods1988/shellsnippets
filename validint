@@ -15,12 +15,12 @@ validint()
       return 1
     fi
 
-    if [ $number -lt $min ] ; then
+    if [ "$number" -lt "$min" ] ; then
       echo "less than."
       return 1
     fi
 
-    if [ $number -gt $max ] ; then
+    if [ "$number" -gt "$max" ] ; then
       echo "greater than."
       return 1
     fi
