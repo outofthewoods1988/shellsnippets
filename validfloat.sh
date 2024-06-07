@@ -7,7 +7,7 @@ validfloat()
     fvalue="$1"
 
     if [ ! -z $(echo "$fvalue" | sed 's/[^.]//g') ] ; then
-      decimalPart="$(echo "$fvalue | cut -d. -f1")"
+      decimalPart="$(echo $fvalue | cut -d. -f1)"
       fractionalPart="${fvalue#*\.}"
       if [ ! -z "$decimalPart" ] ; then
         if ! validint "$decimalPart" "" "" ; then
