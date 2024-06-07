@@ -1,6 +1,6 @@
 #!/bin/bash
 
-.validint
+.validint.sh
 
 validfloat()
 {
