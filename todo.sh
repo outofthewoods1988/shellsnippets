@@ -8,7 +8,7 @@ else
 fi
 
 bc -q -l << EOF
-  scale="$precision"
+  scale=$precision
   $*
   quit
 EOF
