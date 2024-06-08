@@ -1,17 +1,19 @@
 #!/bin/bash
 
-if [ "$1" = "-p" ] ; then
-  precision="$2"
-  shift 2
-else
-  precision=2
-fi
+exec=0
+unexec=0
+for directory in "$PATH" ; do
+  if [ -d "$directory" ] ; then
+    for cmd in "$directory/*" ; do
+      if [ -x "$cmd" ] ; then
+        exec=$((exec + 1))
+      else
+        unexec=$((unexec + 1))
+      fi
+    done
+  fi
+done
 
-bc -q -l << EOF
-  scale=$precision
-  $*
-  quit
-EOF
+echo "executable is $exec, while unexec is $unexec."
 
 exit 0
-
