@@ -23,7 +23,7 @@ if [ -z "$(which lockfile | grep -v '^no')" ] ; then
 fi
 
 if [ "$action" = "lock" ] ; then
-  if ! lockfile -l -r "$retries" "$1" 2> /dev/null; then
+  if ! lockfile -l -r $retries "$1" 2> /dev/null; then
     echo "failed to lock file"
     exit 1
   fi
