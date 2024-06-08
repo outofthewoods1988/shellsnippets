@@ -2,6 +2,7 @@
 
 retries="10"
 action="lock"
+nullcmd="'which true'"
 
 while getopts "lur:" opt ; do
   case $opt in
