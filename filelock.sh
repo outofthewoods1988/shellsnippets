@@ -8,7 +8,7 @@ while getopts "lur:" opt ; do
     l ) action="lock" ;;
     u ) action="unlock" ;;
     r ) retries="OPTARG" ;;
-    * ) echo "not recognized"
+    * ) echo "not recognized" ;;
   esac
 done
 shift $(($OPTIND -1))
