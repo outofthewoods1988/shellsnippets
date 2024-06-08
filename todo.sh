@@ -1,5 +1,6 @@
 #!/bin/bash
 
+IFS=":"
 exec=0
 unexec=0
 for directory in "$PATH" ; do
