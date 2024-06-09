@@ -1,0 +1,16 @@
+#!/bin/bash
+
+removelog="$HOME/remove.log"
+
+if [ $# = 0 ] ; then
+  echo "no file to remove"
+fi
+
+if [ $1 = "-s" ] ; then
+  echo "quiet mode. do not log"
+else
+  echo "$(date) ${USER} $@" >> "$removelog"
+  rm "$@"
+fi
+
+exit 0
