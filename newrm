@@ -1,0 +1,38 @@
+#!/bin/bash
+
+backupdir="$HOME/.deleted-files"
+copy="$(which cp) -R"
+realrm="$(which rm)"
+
+if [ $# -eq 0 ] ; then
+  exec $realrm
+fi
+
+flags=""
+
+while getopts "dfi" opt ; do
+  case $opt in
+    f ) exec $realrm "$@" ;;
+    * ) flags="$flags -$OPTARG" ;;
+  esac
+done
+shift $(($OPTIND - 1))
+
+if [ ! -d $backupdir ] ; then
+  if [ ! -w $HOME ] ; then
+    echo "failed to create"
+    exit 1
+  fi
+  mkdir $backupdir
+  chmod 700 $backupdir
+fi
+
+for arg
+do
+  newfile="$backupdir/$(date "+%S.%M.%H.%d.%m")$(basename $arg)"
+  if [ -f $arg -o -d $arg ] ; then
+    $copy $arg $newfile
+  fi
+done
+
+exec $realrm "$@"
