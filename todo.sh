@@ -2,6 +2,7 @@
 
 . scriptbc.sh
 
+c=$1
 readablesize()
 {
   if [ $1 -ge 1048576 ] ; then
@@ -13,5 +14,5 @@ readablesize()
   fi
 }
 
-a=$(readablesize $1)
+a=$(readablesize $c)
 echo $
