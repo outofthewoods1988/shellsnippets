@@ -13,5 +13,4 @@ readablesize()
   fi
 }
 
-a=$(readablesize $1)
-echo $a
+readablesize $1
