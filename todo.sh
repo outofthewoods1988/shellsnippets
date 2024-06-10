@@ -1,20 +1,17 @@
 #!/bin/bash
 
-IFS=":"
-exec=0
-unexec=0
-for directory in $PATH ; do
-  if [ -d "$directory" ] ; then
-    for cmd in "$directory"/* ; do
-      if [ -x "$cmd" ] ; then
-        exec=$((exec + 1))
-      else
-        unexec=$((unexec + 1))
-      fi
-    done
+. scriptbc.sh
+
+readablesize()
+{
+  if [ $1 -ge 1048576 ] ; then
+    echo "$( scriptbc.sh -p 2 $1 / 1048576 )GB"
+  elif [ $1 -ge 1024 ] ; then
+    echo "$( scriptbc.sh -p 2 $1 / 1024 )MB"
+  else
+    echo "${1}KB"
   fi
-done
+}
 
-echo "executable is $exec, while unexec is $unexec."
-
-exit 0
+a=$(readablesize $1)
+echo $
