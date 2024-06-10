@@ -28,13 +28,13 @@ do
   if [ -d "$file" ] ; then
     size=$(ls "$file" | wc -l |sed 's/[^[:digit:]]//g')
     if [ $size -eq 1 ] ; then
-      echo "$file ($size entry)"
+      echo "$file ($size entry)|"
     else
-      echo "$file ($size entries)"
+      echo "$file ($size entries)|"
     fi
   else
-    size=$(ls -sk "$file" | awk 'print $1')
-    echo "$file ($(readablesize $size))"
+    size="$(ls -sk "$file" | awk '{print $1}')"
+    echo "$file ($(readablesize $size))|"
   fi
 done |
   sed '/ /^^^/g' |
