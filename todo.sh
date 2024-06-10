@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. scriptbc
+scriptbc=$(which scriptebc)
 
 readablesize()
 {
