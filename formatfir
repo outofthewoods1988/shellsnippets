@@ -34,7 +34,7 @@ do
       echo "$file ($size entries)|"
     fi
   else
-    size="$(ls -sk $file) | awk '{print $1}'"
+    size="$(ls -sk $file | awk '{print $1}')"
     echo "$file (readablesize $size)|"
   fi
 done | \
