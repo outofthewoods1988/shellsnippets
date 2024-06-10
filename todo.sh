@@ -39,7 +39,7 @@ do
 done |
   sed '/ /^^^/g'
   xargs -n 2
-  sed 's/^^^/ /g'
+  sed 's/\^\^\^/ /g'
   awk -F\| '{printf "%-39s %-39s\n", $1, $2}'
 
 exit 0
