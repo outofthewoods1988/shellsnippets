@@ -1,0 +1,46 @@
+#!/bin/bash
+
+scriptbc=$(which scriptbc)
+
+readablesize()
+{
+    if [ $1 -ge 1048576 ] ; then
+      echo "$($scriptbc -p 2 $1 / 1048576)Gb"
+    elif [ $1 -ge 1024 ] ; then
+      echo "$($scriptbc -p 2 $1 / 1024)Mb"
+    else
+      echo "${1}Kb"
+    fi
+}
+
+if [ $# -gt 1 ] ; then
+  echo "Usage:"
+  exit 1
+elif [ $# -eq 1 ] ; then
+  cd "$@"
+  if [ $? -ne 0 ] ; then
+    echo "dir not exist"
+    exit 1
+  fi
+fi
+
+for file in *
+do
+  if [ -d "$file" ] ; then
+    size="$(ls $file | wc -l | sed 's/[^[:digit:]]//g')"
+    if [ $size -eq 1 ] ; then
+      echo "$file ($size entry)|"
+    else
+      echo "$file ($size entries)|"
+    fi
+  else
+    size="$(ls -sk $file) | awk '{print $1}'"
+    echo "$file ($readablesize $size)|"
+  fi
+done | \
+  sed 's/ /^^^/g' | \
+  xarg -n 2 | \
+  sed 's/\^\^\^/ /g' | \
+  awk -F\| '{printf "%-39s %-39s", $1, $2}'
+
+exit 0
