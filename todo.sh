@@ -37,7 +37,7 @@ do
     echo "$file ($(readablesize $size))|"
   fi
 done | \
-  sed '/ /^^^/g' | \
+  sed 's/ /^^^/g' | \
   xargs -n 2 | \
   sed 's/\^\^\^/ /g' | \
   awk -F\| '{printf "%-39s %-39s\n", $1, $2}'
