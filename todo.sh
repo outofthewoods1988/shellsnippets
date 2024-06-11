@@ -21,7 +21,7 @@ while read command argument
 do
   case $command in 
     quit|exit) exit 0 ;;
-    scale) scale=$command ;;
+    scale) scale=$argument ;;
     help|\?) show_help ;;
     *) scriptbc -p "$scale" "$command" "$argument" ;;
   esac
