@@ -5,8 +5,8 @@
 
 #}
 
-urls=("https://www.baidu.com" "https://www.bing.com")
+urls=("https://www.google.com" "https://www.bing.com")
 for url in "${urls[@]}" ; do
-  echo "$url"
- 
+  code="$(curl -o /dev/null -s "$url" -w "%{http_code}")"
+  echo "$url - $code" 
 done
