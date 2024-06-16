@@ -5,7 +5,8 @@
 
 #}
 
-urls=("a", "b")
-while read urls ; do
-  echo urls 
+urls=("a" "b")
+while read "${urls[@]}" ; do
+  echo "$urls"
+ 
 done
