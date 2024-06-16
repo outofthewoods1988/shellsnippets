@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#curl_http()
-#{
-
-#}
+curl_http()
+{
+  code="$(curl -o /dev/null -s "$1" -w "%{http_code}")"
+  echo "$url - $code"
+}
 
 urls=("https://www.google.com" "https://www.bing.com")
 for url in "${urls[@]}" ; do
-  code="$(curl -o /dev/null -s "$url" -w "%{http_code}")"
-  echo "$url - $code" 
+  curl_http "$url"
 done
